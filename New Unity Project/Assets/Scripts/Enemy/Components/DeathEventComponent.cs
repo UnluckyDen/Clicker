@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace Enemy.Components
 {
-    public struct AnimatorComponent
+    public struct DeathEventComponent
     {
-        public Animator Animator;
     }
 }

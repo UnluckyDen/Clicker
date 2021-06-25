@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Clicker
+namespace Clicker.Components
 {
-    public struct TimerComponent
+    public struct LoseEventComponent
     {
-        public float Time;
     }
+
 }

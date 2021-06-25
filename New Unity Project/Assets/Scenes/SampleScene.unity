@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &34706045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -428,6 +428,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 07c2cef706c21554d96c23a34f3025bf, type: 2}
+  timerData: {fileID: 11400000, guid: 6a9722757394d86418a714a2d9c5a93c, type: 2}
+  linkData: {fileID: 11400000, guid: f381dedd70d8ca442beef31e1fa69f9c, type: 2}
+  canvasUnityComponents: {fileID: 691653365}
 --- !u!4 &537062924
 Transform:
   m_ObjectHideFlags: 0
@@ -477,7 +480,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 1529}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &669918770
 MonoBehaviour:
@@ -609,6 +612,7 @@ GameObject:
   - component: {fileID: 691653363}
   - component: {fileID: 691653362}
   - component: {fileID: 691653361}
+  - component: {fileID: 691653365}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -666,7 +670,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -698,6 +702,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &691653365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691653360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090938ffeeff05e49b5046cf43e38742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerUI: {fileID: 669918768}
+  hpUI: {fileID: 1071330011}
+  levelUI: {fileID: 1058986745}
+  winScreen: {fileID: 34706044}
+  loseScreen: {fileID: 1605520277}
+  loseRestartButton: {fileID: 352397641}
+  winRestartButton: {fileID: 1729268619}
+  continueButton: {fileID: 1743644981}
+  result: {fileID: 1875532708}
+  leaderBoard: {fileID: 739110122}
 --- !u!1 &739110120
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 654, y: 1529}
+  m_AnchoredPosition: {x: 630, y: 1529}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058986747
@@ -1042,8 +1068,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -782, y: 1529}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -610, y: 1529}
+  m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071330013
 MonoBehaviour:
@@ -1329,6 +1355,7 @@ GameObject:
   - component: {fileID: 1605520278}
   - component: {fileID: 1605520280}
   - component: {fileID: 1605520279}
+  - component: {fileID: 1605520281}
   m_Layer: 5
   m_Name: LoseScreen
   m_TagString: Untagged
@@ -1355,7 +1382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1920}
+  m_AnchoredPosition: {x: 0, y: 1706.7}
   m_SizeDelta: {x: 1400, y: 1600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1605520279
@@ -1394,6 +1421,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605520277}
   m_CullTransparentMesh: 0
+--- !u!61 &1605520281
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605520277}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2000, y: 4000}
+  m_EdgeRadius: 0
 --- !u!1 &1646506768
 GameObject:
   m_ObjectHideFlags: 0

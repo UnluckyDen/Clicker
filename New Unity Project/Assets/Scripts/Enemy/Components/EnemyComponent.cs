@@ -8,5 +8,6 @@ namespace Enemy.Components
     {
         public int Hp;
         public int Level;
+        public GameObject EnemyGameObject;
     }
 }
