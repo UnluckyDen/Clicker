@@ -46,11 +46,19 @@ namespace Clicker.Systems
                 {
                     _timeFilter.Get1(idx).EndStageFor = _timeForCurrentStage - _currentTime;
                 }
-                if ( _timeForCurrentStage - _currentTime > PlayerPrefs.GetFloat("bestTime"))
+
+                if (PlayerPrefs.GetFloat("bestTime") == 0) 
                 {
                     PlayerPrefs.SetFloat("bestTime",_timeForCurrentStage - _currentTime);
                 }
-                
+                else
+                {
+                    if ( _timeForCurrentStage - _currentTime < PlayerPrefs.GetFloat("bestTime"))
+                    {
+                        PlayerPrefs.SetFloat("bestTime",Convert.ToInt32(_timeForCurrentStage - _currentTime));
+                    }
+                }
+
                 StopTimer();
             }
 

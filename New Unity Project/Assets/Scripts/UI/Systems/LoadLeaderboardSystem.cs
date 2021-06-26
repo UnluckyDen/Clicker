@@ -21,14 +21,6 @@ namespace UI.Systems
             {
                 LeaderboardData = LoadLeaderboardJson(_linkData.Link)
             });
-            if (LoadLeaderboardJson(_linkData.Link) != null)
-            {
-                Debug.Log(LoadLeaderboardJson(_linkData.Link)[1].Name);
-            }
-            else
-            {
-                Debug.Log("Internet trables");
-            }
         }
 
         public List<LeaderboardData> LoadLeaderboardJson(string link)
@@ -42,7 +34,12 @@ namespace UI.Systems
             }
             catch (WebException e)
             {
-                return null;
+                LeaderboardData lostConnection = new LeaderboardData();
+                List<LeaderboardData> playerData = new List<LeaderboardData>();
+                lostConnection.Name = "Connection lost";
+                lostConnection.Score = 0;
+                playerData.Add(lostConnection);
+                return playerData;
             }
         }
     }

@@ -68,27 +68,41 @@ namespace UI.Systems
             {
                 _leaderboardDatas = _leaderBoardFilter.Get1(index).LeaderboardData;
             }
+
+            var needle = "Your result";
+            LeaderboardData player = _leaderboardDatas.Find(s =>
+                string.Equals(s.Name, needle, StringComparison.CurrentCultureIgnoreCase));
+
+            _leaderboardDatas.Remove(player);
             
             LeaderboardData playerBestResult = new LeaderboardData();
             playerBestResult.Name = "Your result";
             playerBestResult.Score = Convert.ToInt32(PlayerPrefs.GetFloat("bestTime"));
-            if (!_leaderboardDatas.Contains(playerBestResult))
-            {
-                _leaderboardDatas.Add(playerBestResult);
-            }
+            _leaderboardDatas.Add(playerBestResult);
         }
 
         private List<LeaderboardData> SortLeaderboard(List<LeaderboardData> leaderboardData)
         {
-            List<LeaderboardData> sortedList = leaderboardData.OrderBy(x => x.Score).ToList();
-            return sortedList;
+            if (leaderboardData != null)
+            {
+                List<LeaderboardData> sortedList = leaderboardData.OrderBy(x => x.Score).ToList();
+                return sortedList;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private string LeaderBoardToString(List<LeaderboardData> leaderboardData)
         {
-            foreach (var pair in leaderboardData)
+            _leaderboardString = "";
+            if (leaderboardData!=null)
             {
-                _leaderboardString += pair.Name + " - " + pair.Score + "\n";
+                foreach (var pair in leaderboardData)
+                {
+                    _leaderboardString += pair.Name + " - " + pair.Score + "\n";
+                }
             }
             return _leaderboardString.Trim();
         }
