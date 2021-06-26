@@ -18,7 +18,7 @@ namespace UI.Systems
         
         private bool _rewarded;
         
-        private readonly EcsFilter<RestartEventComponent> _restartEventFilter = null;
+        private readonly EcsFilter<ContinueEventComponent> _continueEventFilter = null;
 
         public void Init()
         {
@@ -44,18 +44,17 @@ namespace UI.Systems
 
         public void Run()
         {
-           
+           ShowRewardingAds();
         }
 
-        private bool ShowRewardingAds()
+        private void ShowRewardingAds()
         {
-            if (!_restartEventFilter.IsEmpty())
+            if (!_continueEventFilter.IsEmpty())
             {
                 if (_rewardedAd.IsLoaded()) {
                     _rewardedAd.Show();
                 }
             }
-            return _rewarded;
         }
         
         

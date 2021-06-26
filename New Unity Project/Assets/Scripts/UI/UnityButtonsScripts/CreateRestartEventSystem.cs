@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace UI.UnityButtonsScripts
 {
-    public class CreateRestartEvent : IEcsInitSystem
+    public class CreateRestartEventSystem : IEcsInitSystem
     {
         private readonly EcsWorld _world = null;
 

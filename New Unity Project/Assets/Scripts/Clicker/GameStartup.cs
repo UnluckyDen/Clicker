@@ -41,7 +41,7 @@ namespace Clicker
 
             _systems
                 .Add(new CreateContinueEventSystem())
-                .Add(new CreateRestartEvent())
+                .Add(new CreateRestartEventSystem())
                 .Add(new DeathSystem())
                 .Add(new ClickSystem())
                 .Add(new AnimatorSystem())

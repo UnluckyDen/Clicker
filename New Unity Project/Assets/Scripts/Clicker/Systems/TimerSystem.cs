@@ -46,7 +46,7 @@ namespace Clicker.Systems
                 {
                     _timeFilter.Get1(idx).EndStageFor = _timeForCurrentStage - _currentTime;
                 }
-                if ( _timeForCurrentStage - _currentTime < PlayerPrefs.GetFloat("bestTime"))
+                if ( _timeForCurrentStage - _currentTime > PlayerPrefs.GetFloat("bestTime"))
                 {
                     PlayerPrefs.SetFloat("bestTime",_timeForCurrentStage - _currentTime);
                 }
